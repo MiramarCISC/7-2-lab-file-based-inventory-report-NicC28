@@ -7,14 +7,25 @@ using namespace std;
 
 // Returns true when quantity is 0 or greater
 bool isValidQuantity(int quantity) {
-    return quantity >= 0;
+    if (quantity >= 0)
+    {
+        return true;
+    }
+    
+    return false;
 }
 
 // Returns true when price is 0 or greater
 bool isValidPrice(double price) {
-    return price >= 0;
+    if (price >= 0)
+    {
+        return true;
+    }
+    
+    return false;
 }
 
+//Item Value is the quantity of items times the price
 // Returns quantity multiplied by price, returns 0.0 if quantity or price is invalid
 double calculateItemValue(const InventoryItem& item) {
     if (!isValidQuantity(item.quantity) || !isValidPrice(item.price)) {
@@ -118,12 +129,12 @@ int findHighestValueItemIndex(const InventoryItem items[], int count) {
         return -1;
     }
 
-    double highest = calculateItemValue(items[0]);
+    double highestValue = calculateItemValue(items[0]);
     int highestIndex = 0;
 
     for (int i = 1; i < count; i++) {
-        if (calculateItemValue(items[i]) > highest) {
-            highest = calculateItemValue(items[i]);
+        if (calculateItemValue(items[i]) > highestValue) {
+            highestValue = calculateItemValue(items[i]);
             highestIndex = i;
         }
     }
